@@ -15,14 +15,14 @@ public class controller {
 	private PokeApiClientImpl pokeApiClientImpl;
 	
 	
-	@GetMapping("/test")
+	@GetMapping("/get")
 	public void getData() {
 		//System.out.println("We got a get Request");
 		pokeApiClientImpl.getInformation();
 	}
 	
 	
-	@PostMapping("/test2")
+	@PostMapping("/post")
 	public void postData() {
 		System.out.println("We got a post Request");
 	}
