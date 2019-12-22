@@ -1,5 +1,8 @@
 package SpringMvcTemplate.Client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +43,13 @@ public class PokeApiClientImpl implements ApiClient {
 
 		
 		ResponseEntity<Object> info = restTemplate.exchange(url+number,HttpMethod.GET,entity,Object.class);
+		System.out.print(info.getBody().toString());
 		ObjectMapper om = new ObjectMapper();
+		
+		HashMap<String, String> stuff = new HashMap<String, String>();
+		
+		List<String>  stuff2 = new ArrayList<String>();
+		
 		return null;
 	}
 	
