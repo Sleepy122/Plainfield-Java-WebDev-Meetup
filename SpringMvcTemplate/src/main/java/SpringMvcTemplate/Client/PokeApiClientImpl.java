@@ -51,7 +51,7 @@ public class PokeApiClientImpl implements ApiClient {
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 		
-		ResponseEntity<String> info = restTemplate.exchange(url+"12",HttpMethod.GET,generateHeader(),String.class);
+		ResponseEntity<String> info = restTemplate.exchange(url+getRandomNumber(80),HttpMethod.GET,generateHeader(),String.class);
 		
 		JSONObject json = new JSONObject(info.getBody().toString());
 		
@@ -65,10 +65,8 @@ public class PokeApiClientImpl implements ApiClient {
 			e.printStackTrace();
 		}
 		
-		System.out.print(info.getBody().toString());
-		boolean gotSpice = item.getFlavors().stream()
-				.anyMatch(n -> n.getFlavor().getName().equals("spicy"));
-		if(gotSpice) {
+		System.out.println(info.getBody().toString());
+		if(isItSpicy(item)) {
 			return item.getName();
 		}else {
 			return "not spicy";
@@ -85,6 +83,12 @@ public class PokeApiClientImpl implements ApiClient {
 		headers.set("Accept", "application/json");
         headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
 		return new HttpEntity<>(headers);
+	}
+	
+	public boolean isItSpicy(Berry tester) {
+		
+		return tester.getFlavors().stream()
+				.anyMatch(n -> n.getFlavor().getName().equals("spicy") && n.getPotency() >0);
 	}
 
 }
