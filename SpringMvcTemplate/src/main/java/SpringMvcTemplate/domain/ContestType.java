@@ -5,9 +5,9 @@ import java.util.List;
 public class ContestType {
 	private Integer id;
 	private String name;
-	private BerryFlavor berry_flavor;
+	private Flavor berry_flavor;
 	private List<ContestName> names;
-	public ContestType(Integer id, String name, BerryFlavor berry_flavor, List<ContestName> names) {
+	public ContestType(Integer id, String name, Flavor berry_flavor, List<ContestName> names) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,10 +26,10 @@ public class ContestType {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public BerryFlavor getBerry_flavor() {
+	public Flavor getBerry_flavor() {
 		return berry_flavor;
 	}
-	public void setBerry_flavor(BerryFlavor berry_flavor) {
+	public void setBerry_flavor(Flavor berry_flavor) {
 		this.berry_flavor = berry_flavor;
 	}
 	public List<ContestName> getNames() {

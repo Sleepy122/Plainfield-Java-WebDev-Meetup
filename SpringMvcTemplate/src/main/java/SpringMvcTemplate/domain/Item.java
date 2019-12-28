@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Item {
 	private Integer id;
 	private String name;
+	private String url;
 	private Integer cost;
 	private Integer fling_power;
 	private ItemFlingEffect fling_effect;
@@ -25,7 +26,12 @@ public class Item {
 	private EvolutionChain baby_trigger_for;
 	@JsonIgnore
 	private MachineVersionDetail machines;
-	public Item(Integer id, String name, Integer cost, Integer fling_power, ItemFlingEffect fling_effect,
+	
+	public Item() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Item(Integer id, String name, String url, Integer cost, Integer fling_power, ItemFlingEffect fling_effect,
 			List<ItemAttribute> attributes, ItemCategory category, List<VerboseEffect> effect_entries,
 			List<VersionGroupFlavorText> flavor_text_entries, List<GenerationGameIndex> game_indices, List<Name> names,
 			ItemSprites sprites, List<ItemHolderPokemon> held_by_pokemon, EvolutionChain baby_trigger_for,
@@ -33,6 +39,7 @@ public class Item {
 		super();
 		this.id = id;
 		this.name = name;
+		this.url = url;
 		this.cost = cost;
 		this.fling_power = fling_power;
 		this.fling_effect = fling_effect;
@@ -58,6 +65,12 @@ public class Item {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public Integer getCost() {
 		return cost;
