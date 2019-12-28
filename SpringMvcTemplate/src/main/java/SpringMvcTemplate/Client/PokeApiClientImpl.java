@@ -29,7 +29,7 @@ import SpringMvcTemplate.domain.Type;
 @Service
 @CrossOrigin
 public class PokeApiClientImpl implements ApiClient {
-
+	private final String url ="https://www.pokeapi.co/api/v2/berry/";
 	@Autowired
 	private RestTemplate restTemplate;
 	
@@ -38,24 +38,25 @@ public class PokeApiClientImpl implements ApiClient {
 		super();
 		this.restTemplate = restTemplate;
 	}
+	public String getInformation(String type) {
+		switch(type) {
+		case "spicy": return getSpicyBerry();
+			default: return getSpicyBerry();
+		}
+	}
 
-
-	@Override
-	public Berry getInformation() {
-		Random random = new Random();
-		int number= random.nextInt(100);
-		String url = "https://www.pokeapi.co/api/v2/berry/";
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Accept", "application/json");
-        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-		HttpEntity<?> entity = new HttpEntity<>(headers);
-		ResponseEntity<String> info = restTemplate.exchange(url+"12",HttpMethod.GET,entity,String.class);
-		JSONObject json = new JSONObject(info.getBody().toString());
+	public String getSpicyBerry() {
 		Berry item = null;
-		ObjectMapper om = new ObjectMapper();
-		om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+		
+		ResponseEntity<String> info = restTemplate.exchange(url+"12",HttpMethod.GET,generateHeader(),String.class);
+		
+		JSONObject json = new JSONObject(info.getBody().toString());
+		
 		try {
-			 item = om.readValue(json.toString(), Berry.class);
+			 item = mapper.readValue(json.toString(), Berry.class);
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,11 +64,27 @@ public class PokeApiClientImpl implements ApiClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		System.out.print(info.getBody().toString());
-		boolean needsName = item.getFlavors().stream()
+		boolean gotSpice = item.getFlavors().stream()
 				.anyMatch(n -> n.getFlavor().getName().equals("spicy"));
-		return item;
+		if(gotSpice) {
+			return item.getName();
+		}else {
+			return "not spicy";
+		}
 	}
 	
+	public int getRandomNumber(int range) {
+		Random random = new Random();
+		return random.nextInt(range);
+	}
+	
+	public HttpEntity<?> generateHeader(){
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Accept", "application/json");
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+		return new HttpEntity<>(headers);
+	}
 
 }

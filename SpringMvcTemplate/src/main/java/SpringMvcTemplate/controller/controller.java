@@ -12,13 +12,14 @@ import SpringMvcTemplate.Client.PokeApiClientImpl;
 public class controller {
 	
 	@Autowired
-	private PokeApiClientImpl pokeApiClientImpl;
+	private ApiClient apiClient;
 	
 	
 	@GetMapping("/get")
-	public void getData() {
+	public String getData() {
 		//System.out.println("We got a get Request");
-		pokeApiClientImpl.getInformation();
+		return apiClient.getInformation("spicy");
+		
 	}
 	
 	

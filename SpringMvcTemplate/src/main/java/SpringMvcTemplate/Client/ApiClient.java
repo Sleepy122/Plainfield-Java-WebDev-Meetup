@@ -4,6 +4,6 @@ import SpringMvcTemplate.domain.Berry;
 
 public interface ApiClient {
 	
-	public Berry getInformation();
+	public String getInformation(String type);
 
 }
