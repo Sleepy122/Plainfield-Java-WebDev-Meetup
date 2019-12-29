@@ -15,7 +15,7 @@ public class controller {
 	private ApiClient apiClient;
 	
 	
-	@GetMapping("/get")
+	@GetMapping("/getBerry")
 	public String getData() {
 		//System.out.println("We got a get Request");
 		return apiClient.getInformation("spicy");

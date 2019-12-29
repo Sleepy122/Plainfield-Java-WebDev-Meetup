@@ -29,6 +29,19 @@ public class PokeApiClientImplTest {
 		Assertions.assertEquals(true, subject.isItSpicy(test));
 		
 	}
+	@Test
+	public void whenBerryHasNoSpicyFlavor_thenShouldNotReturnBerryName() {
+		ObjectMapper mapper = new ObjectMapper();
+		Berry test = null;
+		try {
+			test = mapper.readValue(notSpicyBerryStub, Berry.class);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Assertions.assertEquals(false, subject.isItSpicy(test));
+		
+	}
 	
 	private static final String notSpicyBerryStub = "{\r\n    \"flavors\": [{\r\n            "
 			+ "\"flavor\": {\r\n                \"name\": \"spicy\","
