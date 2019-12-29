@@ -51,7 +51,7 @@ public class PokeApiClientImpl implements ApiClient {
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 		
-		ResponseEntity<String> info = restTemplate.exchange(url+getRandomNumber(80),HttpMethod.GET,generateHeader(),String.class);
+		ResponseEntity<String> info = restTemplate.exchange(url+getRandomNumber(60),HttpMethod.GET,generateHeader(),String.class);
 		
 		JSONObject json = new JSONObject(info.getBody().toString());
 		
@@ -87,8 +87,9 @@ public class PokeApiClientImpl implements ApiClient {
 	
 	public boolean isItSpicy(Berry tester) {
 		
+		System.out.println(tester.getFlavors().get(0).getPotency().intValue());
 		return tester.getFlavors().stream()
-				.anyMatch(n -> n.getFlavor().getName().equals("spicy") && n.getPotency() >0);
+				.anyMatch(n -> n.getFlavor().getName().equals("spicy") && n.getPotency().intValue()>0);
 	}
 
 }
