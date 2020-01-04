@@ -25,6 +25,6 @@ public class controller {
 	
 	@PostMapping("/post")
 	public void postData() {
-		System.out.println("We got a post Request");
+		System.out.println("We got a post Request Adding stuff to showjaflkdsjfajsfdkl");
 	}
 }
