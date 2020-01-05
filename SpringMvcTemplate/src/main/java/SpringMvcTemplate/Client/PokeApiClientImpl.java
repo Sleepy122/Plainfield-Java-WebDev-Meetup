@@ -87,7 +87,7 @@ public class PokeApiClientImpl implements ApiClient {
 	
 	public boolean isItSpicy(Berry tester) {
 		
-		System.out.println(tester.getFlavors().get(0).getPotency().intValue());
+		System.out.println(tester.getFlavors().get(05).getPotency().intValue());
 		return tester.getFlavors().stream()
 				.anyMatch(n -> n.getFlavor().getName().equals("spicy") && n.getPotency().intValue()>0);
 	}
