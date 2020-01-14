@@ -1,0 +1,6 @@
+applications:
+- name: SpringMvcTemplate
+  host: SpringMvcTemplate
+  memory: 1G
+  path: build/libs/SpringMvcTemplate-0.0.1-SNAPSHOT.jar
+  buildpack: java_buildpack
