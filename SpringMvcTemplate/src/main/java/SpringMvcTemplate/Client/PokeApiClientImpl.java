@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import SpringMvcTemplate.domain.Berry;
 import SpringMvcTemplate.domain.BerryFlavorMap;
-import SpringMvcTemplate.domain.Type;
+import SpringMvcTemplate.domain.TypeDescription;
 
 @Service
 @CrossOrigin

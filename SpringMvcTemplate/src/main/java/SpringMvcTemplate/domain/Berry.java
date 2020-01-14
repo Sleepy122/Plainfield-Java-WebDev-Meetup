@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Berry  implements Serializable {
 	private List<BerryFlavorMap> flavors;
-	private Type natural_gift_type;
+	private TypeDescription natural_gift_type;
 	private Item item;
 	private int id;
 	private String name;
@@ -24,7 +24,7 @@ public class Berry  implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Berry(List<BerryFlavorMap> flavors, Type natural_gift_type, Item item, int id, String name, int growth_time,
+	public Berry(List<BerryFlavorMap> flavors, TypeDescription natural_gift_type, Item item, int id, String name, int growth_time,
 			int max_harvest, int natural_gift_power, int size, int smoothness, int soil_dryness,
 			BerryFirmness firmness) {
 		super();
@@ -50,11 +50,11 @@ public class Berry  implements Serializable {
 		this.flavors = flavors;
 	}
 
-	public Type getNatural_gift_type() {
+	public TypeDescription getNatural_gift_type() {
 		return natural_gift_type;
 	}
 
-	public void setNatural_gift_type(Type natural_gift_type) {
+	public void setNatural_gift_type(TypeDescription natural_gift_type) {
 		this.natural_gift_type = natural_gift_type;
 	}
 

@@ -1,28 +1,25 @@
 package SpringMvcTemplate.domain;
 
 public class Type {
-	private String name;
-	private String url;
-	public Type() {
+	private Integer slot;
+	private Type type;
+	public Type(Integer slot, Type type) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.slot = slot;
+		this.type = type;
 	}
-	public Type(String name, String url) {
-		super();
-		this.name = name;
-		this.url = url;
+	public Integer getSlot() {
+		return slot;
 	}
-	public String getName() {
-		return name;
+	public void setSlot(Integer slot) {
+		this.slot = slot;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public Type getType() {
+		return type;
 	}
-	public String getUrl() {
-		return url;
+	public void setType(Type type) {
+		this.type = type;
 	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	
 	
 }

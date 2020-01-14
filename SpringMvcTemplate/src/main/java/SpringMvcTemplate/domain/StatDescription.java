@@ -1,9 +1,9 @@
 package SpringMvcTemplate.domain;
 
-public class Version {
+public class StatDescription {
 	private String name;
 	private String url;
-	public Version(String name, String url) {
+	public StatDescription(String name, String url) {
 		super();
 		this.name = name;
 		this.url = url;

@@ -1,9 +1,13 @@
 package SpringMvcTemplate.domain;
 
-public class Version {
+public class TypeDescription {
 	private String name;
 	private String url;
-	public Version(String name, String url) {
+	public TypeDescription() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public TypeDescription(String name, String url) {
 		super();
 		this.name = name;
 		this.url = url;
@@ -20,6 +24,5 @@ public class Version {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
 	
 }
