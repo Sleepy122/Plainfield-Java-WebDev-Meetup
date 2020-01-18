@@ -4,6 +4,12 @@ public class Ability {
 	private AbilityDescription ability;
 	private boolean is_hidden;
 	private Integer slot;
+	
+	
+	public Ability() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Ability(AbilityDescription ability, boolean is_hidden, Integer slot) {
 		super();
 		this.ability = ability;

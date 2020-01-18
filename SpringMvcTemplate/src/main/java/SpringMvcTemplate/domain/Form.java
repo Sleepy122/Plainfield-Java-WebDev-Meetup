@@ -1,15 +1,14 @@
 package SpringMvcTemplate.domain;
 
-public class StatDescription {
+public class Form {
 	private String name;
 	private String url;
 	
-	
-	public StatDescription() {
+	public Form() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StatDescription(String name, String url) {
+	public Form(String name, String url) {
 		super();
 		this.name = name;
 		this.url = url;

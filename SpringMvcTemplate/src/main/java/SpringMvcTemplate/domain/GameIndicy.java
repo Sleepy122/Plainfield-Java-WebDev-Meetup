@@ -3,6 +3,12 @@ package SpringMvcTemplate.domain;
 public class GameIndicy {
 	private Integer game_index;
 	private Version version;
+	
+	
+	public GameIndicy() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public GameIndicy(Integer game_index, Version version) {
 		super();
 		this.game_index = game_index;

@@ -3,6 +3,12 @@ package SpringMvcTemplate.domain;
 public class AbilityDescription {
 	private String name;
 	private String url;
+	
+	
+	public AbilityDescription() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public AbilityDescription(String name, String url) {
 		super();
 		this.name = name;

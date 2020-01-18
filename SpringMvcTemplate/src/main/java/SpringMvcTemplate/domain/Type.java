@@ -2,8 +2,13 @@ package SpringMvcTemplate.domain;
 
 public class Type {
 	private Integer slot;
-	private Type type;
-	public Type(Integer slot, Type type) {
+	private TypeDescription type;
+	
+	public Type() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Type(Integer slot, TypeDescription type) {
 		super();
 		this.slot = slot;
 		this.type = type;
@@ -14,10 +19,10 @@ public class Type {
 	public void setSlot(Integer slot) {
 		this.slot = slot;
 	}
-	public Type getType() {
+	public TypeDescription getType() {
 		return type;
 	}
-	public void setType(Type type) {
+	public void setType(TypeDescription type) {
 		this.type = type;
 	}
 	

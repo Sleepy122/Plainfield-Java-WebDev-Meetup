@@ -3,6 +3,12 @@ package SpringMvcTemplate.domain;
 public class MoveDescription {
 	private String name;
 	private String url;
+	
+	
+	public MoveDescription() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public MoveDescription(String name, String url) {
 		super();
 		this.name = name;

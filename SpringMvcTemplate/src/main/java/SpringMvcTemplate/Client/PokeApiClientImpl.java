@@ -24,12 +24,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import SpringMvcTemplate.domain.Berry;
 import SpringMvcTemplate.domain.BerryFlavorMap;
+import SpringMvcTemplate.domain.Pokemon;
 import SpringMvcTemplate.domain.TypeDescription;
 
 @Service
 @CrossOrigin
 public class PokeApiClientImpl implements ApiClient {
-	private final String url ="https://www.pokeapi.co/api/v2/berry/";
+	private final String berryUrl ="https://www.pokeapi.co/api/v2/berry/";
+	private final String pokemonUrl = "https://www.pokeapi.co/api/v2/pokemon/";
 	@Autowired
 	private RestTemplate restTemplate;
 	
@@ -41,6 +43,7 @@ public class PokeApiClientImpl implements ApiClient {
 	public String getInformation(String type) {
 		switch(type) {
 		case "spicy": return getSpicyBerry();
+		case "pokemon": return getPokemon();
 			default: return getSpicyBerry();
 		}
 	}
@@ -51,7 +54,7 @@ public class PokeApiClientImpl implements ApiClient {
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 		
-		ResponseEntity<String> info = restTemplate.exchange(url+getRandomNumber(60),HttpMethod.GET,generateHeader(),String.class);
+		ResponseEntity<String> info = restTemplate.exchange(berryUrl+getRandomNumber(60),HttpMethod.GET,generateHeader(),String.class);
 		
 		JSONObject json = new JSONObject(info.getBody().toString());
 		
@@ -88,6 +91,31 @@ public class PokeApiClientImpl implements ApiClient {
 
 		return tester.getFlavors().stream()
 				.anyMatch(n -> n.getFlavor().getName().equals("spicy") && n.getPotency().intValue()>0);
+	}
+	
+	public String getPokemon() {
+		Pokemon item = null;
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+		
+		ResponseEntity<String> info = restTemplate.exchange(pokemonUrl+getRandomNumber(60),HttpMethod.GET,generateHeader(),String.class);
+		
+		JSONObject json = new JSONObject(info.getBody().toString());
+		System.out.println(json);
+		
+		try {
+			 item = mapper.readValue(json.toString(), Pokemon.class);
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return item.getName();
+		
 	}
 
 }

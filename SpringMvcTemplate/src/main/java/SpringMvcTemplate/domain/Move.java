@@ -5,6 +5,12 @@ import java.util.List;
 public class Move {
 	private MoveDescription move;
 	private List<VersionGroupDetail> version_group_details;
+	
+	
+	public Move() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Move(MoveDescription move, List<VersionGroupDetail> version_group_details) {
 		super();
 		this.move = move;

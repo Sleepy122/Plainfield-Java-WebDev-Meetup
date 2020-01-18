@@ -19,6 +19,13 @@ public class VersionGroup {
 	private Region regions;
 	@JsonIgnore
 	private Version versions;
+	
+	
+
+	public VersionGroup() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public VersionGroup(Integer id, String name, Integer order, String url, Generation generation,
 			List<MoveLearnMethod> move_learn_methods, Pokedex pokedexes, Region regions, Version versions) {

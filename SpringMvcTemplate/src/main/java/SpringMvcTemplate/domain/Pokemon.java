@@ -2,72 +2,54 @@ package SpringMvcTemplate.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Pokemon {
-	private Integer id;
-	private String name;
-	private Integer base_experience;
-	private Integer height;
-	private boolean is_default;
 	private String location_area_encounters;
-	private Integer order;
+	private List<Type> types;
+	private Integer base_experience;
+	private List<Item> held_items;
 	private Integer weight;
+	private boolean is_default;
+	@JsonIgnore
+	private Sprite sprites;
 	private List<Ability> abilities;
 	private List<GameIndicy> game_indices;
-	private List<Move> moves;
-	private List<Species> species;
+	private Species species;
 	private List<Stat> stats;
-	private List<Type> types;
-	private List<Sprite> sprites;
-	public Pokemon(Integer id, String name, Integer base_experience, Integer height, boolean is_default,
-			String location_area_encounters, Integer order, Integer weight, List<Ability> abilities,
-			List<GameIndicy> game_indices, List<Move> moves, List<Species> species, List<Stat> stats, List<Type> types,
-			List<Sprite> sprites) {
+	private List<Move> moves;
+	private String name;
+	private Integer id;
+	private List<Form> forms;
+	private Integer height;
+	private Integer order;
+	
+	public Pokemon() {
 		super();
-		this.id = id;
-		this.name = name;
-		this.base_experience = base_experience;
-		this.height = height;
-		this.is_default = is_default;
+		// TODO Auto-generated constructor stub
+	}
+	public Pokemon(String location_area_encounters, List<Type> types, Integer base_experience, List<Item> held_items,
+			Integer weight, boolean is_default, Sprite sprites, List<Ability> abilities,
+			List<GameIndicy> game_indices, Species species, List<Stat> stats, List<Move> moves, String name,
+			Integer id, List<Form> forms, Integer height, Integer order) {
+		super();
 		this.location_area_encounters = location_area_encounters;
-		this.order = order;
+		this.types = types;
+		this.base_experience = base_experience;
+		this.held_items = held_items;
 		this.weight = weight;
+		this.is_default = is_default;
+		this.sprites = sprites;
 		this.abilities = abilities;
 		this.game_indices = game_indices;
-		this.moves = moves;
 		this.species = species;
 		this.stats = stats;
-		this.types = types;
-		this.sprites = sprites;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
+		this.moves = moves;
 		this.name = name;
-	}
-	public Integer getBase_experience() {
-		return base_experience;
-	}
-	public void setBase_experience(Integer base_experience) {
-		this.base_experience = base_experience;
-	}
-	public Integer getHeight() {
-		return height;
-	}
-	public void setHeight(Integer height) {
+		this.id = id;
+		this.forms = forms;
 		this.height = height;
-	}
-	public boolean isIs_default() {
-		return is_default;
-	}
-	public void setIs_default(boolean is_default) {
-		this.is_default = is_default;
+		this.order = order;
 	}
 	public String getLocation_area_encounters() {
 		return location_area_encounters;
@@ -75,17 +57,41 @@ public class Pokemon {
 	public void setLocation_area_encounters(String location_area_encounters) {
 		this.location_area_encounters = location_area_encounters;
 	}
-	public Integer getOrder() {
-		return order;
+	public List<Type> getTypes() {
+		return types;
 	}
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setTypes(List<Type> types) {
+		this.types = types;
+	}
+	public Integer getBase_experience() {
+		return base_experience;
+	}
+	public void setBase_experience(Integer base_experience) {
+		this.base_experience = base_experience;
+	}
+	public List<Item> getHeld_items() {
+		return held_items;
+	}
+	public void setHeld_items(List<Item> held_items) {
+		this.held_items = held_items;
 	}
 	public Integer getWeight() {
 		return weight;
 	}
 	public void setWeight(Integer weight) {
 		this.weight = weight;
+	}
+	public boolean isIs_default() {
+		return is_default;
+	}
+	public void setIs_default(boolean is_default) {
+		this.is_default = is_default;
+	}
+	public Sprite getSprites() {
+		return sprites;
+	}
+	public void setSprites(Sprite sprites) {
+		this.sprites = sprites;
 	}
 	public List<Ability> getAbilities() {
 		return abilities;
@@ -99,16 +105,10 @@ public class Pokemon {
 	public void setGame_indices(List<GameIndicy> game_indices) {
 		this.game_indices = game_indices;
 	}
-	public List<Move> getMoves() {
-		return moves;
-	}
-	public void setMoves(List<Move> moves) {
-		this.moves = moves;
-	}
-	public List<Species> getSpecies() {
+	public Species getSpecies() {
 		return species;
 	}
-	public void setSpecies(List<Species> species) {
+	public void setSpecies(Species species) {
 		this.species = species;
 	}
 	public List<Stat> getStats() {
@@ -117,17 +117,41 @@ public class Pokemon {
 	public void setStats(List<Stat> stats) {
 		this.stats = stats;
 	}
-	public List<Type> getTypes() {
-		return types;
+	public List<Move> getMoves() {
+		return moves;
 	}
-	public void setTypes(List<Type> types) {
-		this.types = types;
+	public void setMoves(List<Move> moves) {
+		this.moves = moves;
 	}
-	public List<Sprite> getSprites() {
-		return sprites;
+	public String getName() {
+		return name;
 	}
-	public void setSprites(List<Sprite> sprites) {
-		this.sprites = sprites;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public List<Form> getForms() {
+		return forms;
+	}
+	public void setForms(List<Form> forms) {
+		this.forms = forms;
+	}
+	public Integer getHeight() {
+		return height;
+	}
+	public void setHeight(Integer height) {
+		this.height = height;
+	}
+	public Integer getOrder() {
+		return order;
+	}
+	public void setOrder(Integer order) {
+		this.order = order;
 	}
 	
 	

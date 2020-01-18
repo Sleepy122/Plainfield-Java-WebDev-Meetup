@@ -4,6 +4,12 @@ public class Stat {
 	private Integer base_stat;
 	private Integer effort;
 	private StatDescription stat;
+	
+	
+	public Stat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Stat(Integer base_stat, Integer effort, StatDescription stat) {
 		super();
 		this.base_stat = base_stat;

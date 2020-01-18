@@ -3,6 +3,12 @@ package SpringMvcTemplate.domain;
 public class MoveLearnMethod {
 	private String name;
 	private String url;
+	
+	
+	public MoveLearnMethod() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public MoveLearnMethod(String name, String url) {
 		super();
 		this.name = name;

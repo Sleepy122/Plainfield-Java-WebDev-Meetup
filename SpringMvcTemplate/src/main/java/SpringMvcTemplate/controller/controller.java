@@ -19,7 +19,7 @@ public class controller {
 	@GetMapping("/getBerry")
 	public String getData() {
 		//System.out.println("We got a get Request");
-		return apiClient.getInformation("spicy");
+		return apiClient.getInformation("pokemon");
 		
 	}
 	

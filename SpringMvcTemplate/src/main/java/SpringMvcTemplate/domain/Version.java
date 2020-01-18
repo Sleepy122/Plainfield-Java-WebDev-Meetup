@@ -3,6 +3,12 @@ package SpringMvcTemplate.domain;
 public class Version {
 	private String name;
 	private String url;
+	
+	
+	public Version() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Version(String name, String url) {
 		super();
 		this.name = name;

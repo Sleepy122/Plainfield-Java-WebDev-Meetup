@@ -3,6 +3,12 @@ package SpringMvcTemplate.domain;
 public class Species {
 	private String name;
 	private String url;
+	
+	
+	public Species() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Species(String name, String url) {
 		super();
 		this.name = name;

@@ -4,6 +4,12 @@ public class VersionGroupDetail {
 	private Integer level_learned_at;
 	private MoveLearnMethod move_learn_method;
 	private VersionGroup version_group;
+	
+	
+	public VersionGroupDetail() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public VersionGroupDetail(Integer level_learned_at, MoveLearnMethod move_learn_method, VersionGroup version_group) {
 		super();
 		this.level_learned_at = level_learned_at;
