@@ -5,24 +5,55 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Pokemon {
+	@JsonIgnore
 	private String location_area_encounters;
+	
 	private List<Type> types;
+	
+	@JsonIgnore
 	private Integer base_experience;
+	
+	@JsonIgnore
 	private List<Item> held_items;
+	
+	
 	private Integer weight;
+	
+	@JsonIgnore
 	private boolean is_default;
+	
 	@JsonIgnore
 	private Sprite sprites;
+	
+	@JsonIgnore
 	private List<Ability> abilities;
+	
+	@JsonIgnore
 	private List<GameIndicy> game_indices;
+	
+	@JsonIgnore
 	private Species species;
+	
+	@JsonIgnore
 	private List<Stat> stats;
+	
+	@JsonIgnore
 	private List<Move> moves;
+	
 	private String name;
+	
+	@JsonIgnore
 	private Integer id;
+	
+	@JsonIgnore
 	private List<Form> forms;
+	
 	private Integer height;
+	
+	@JsonIgnore
 	private Integer order;
+	
+	private List<String> moveNames;
 	
 	public Pokemon() {
 		super();
@@ -153,8 +184,16 @@ public class Pokemon {
 	public void setOrder(Integer order) {
 		this.order = order;
 	}
+	public List<String> getMoveNames() {
+		return moveNames;
+	}
+	public void setMoveNames(List<String> moveNames) {
+		this.moveNames = moveNames;
+	}
 	
-	
-	
+	public void addMoveNames(String moveName) {
+		this.moveNames.add(moveName);
+	}
+
 	
 }

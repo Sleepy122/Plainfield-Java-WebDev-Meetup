@@ -24,6 +24,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import SpringMvcTemplate.domain.Berry;
 import SpringMvcTemplate.domain.BerryFlavorMap;
+import SpringMvcTemplate.domain.Move;
+import SpringMvcTemplate.domain.MoveDescription;
 import SpringMvcTemplate.domain.Pokemon;
 import SpringMvcTemplate.domain.TypeDescription;
 
@@ -43,7 +45,8 @@ public class PokeApiClientImpl implements ApiClient {
 	public String getInformation(String type) {
 		switch(type) {
 		case "spicy": return getSpicyBerry();
-		case "pokemon": return getPokemon();
+		case "pokemon": return getPokemon(false);
+		case "pokemon-name":return getPokemon(true);
 			default: return getSpicyBerry();
 		}
 	}
@@ -93,19 +96,20 @@ public class PokeApiClientImpl implements ApiClient {
 				.anyMatch(n -> n.getFlavor().getName().equals("spicy") && n.getPotency().intValue()>0);
 	}
 	
-	public String getPokemon() {
+	public String getPokemon(boolean allData) {
 		Pokemon item = null;
 		ObjectMapper mapper = new ObjectMapper();
+		JSONObject json = null;
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 		
 		ResponseEntity<String> info = restTemplate.exchange(pokemonUrl+getRandomNumber(60),HttpMethod.GET,generateHeader(),String.class);
 		
-		JSONObject json = new JSONObject(info.getBody().toString());
-		System.out.println(json);
+		//JSONObject json = new JSONObject(info.getBody().toString());
+		//System.out.println(json);
 		
 		try {
-			 item = mapper.readValue(json.toString(), Pokemon.class);
+			 item = mapper.readValue(info.getBody().toString(), Pokemon.class);
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +117,12 @@ public class PokeApiClientImpl implements ApiClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		if(allData) {
+		//	item.getMoves().stream().map(f -> f.getMove().getName())
+			json = new JSONObject(item);
+			
+			return json.toString();
+		}
 		return item.getName();
 		
 	}

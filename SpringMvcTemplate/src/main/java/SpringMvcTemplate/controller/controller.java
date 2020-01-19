@@ -16,16 +16,26 @@ public class controller {
 	private ApiClient apiClient;
 	
 	
-	@GetMapping("/getBerry")
-	public String getData() {
-		//System.out.println("We got a get Request");
-		return apiClient.getInformation("pokemon");
+	@GetMapping("/getPokemon/name")
+	public String getPokemonName() {
+		return apiClient.getInformation("pokemon-name");
 		
 	}
 	
+	@GetMapping("/getBerry/spice")
+	public String getBerrySpice() {
+		return apiClient.getInformation("berry");
+		
+	}
+	
+	@GetMapping("/getPokemon")
+	public String getPokemon() {
+		return apiClient.getInformation("pokemon");
+		
+	}
 	@GetMapping("/v1")
 	public RedirectView getPage() {
-		return new RedirectView("/static/index.html");
+		return new RedirectView("/");
 		
 	}
 	
