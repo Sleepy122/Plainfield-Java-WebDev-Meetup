@@ -37,7 +37,7 @@ public class Pokemon {
 	@JsonIgnore
 	private List<Stat> stats;
 	
-	@JsonIgnore
+	
 	private List<Move> moves;
 	
 	private String name;

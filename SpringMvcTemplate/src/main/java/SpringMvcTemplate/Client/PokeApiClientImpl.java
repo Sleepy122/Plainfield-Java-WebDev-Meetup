@@ -26,6 +26,7 @@ import SpringMvcTemplate.domain.Berry;
 import SpringMvcTemplate.domain.BerryFlavorMap;
 import SpringMvcTemplate.domain.Move;
 import SpringMvcTemplate.domain.MoveDescription;
+import SpringMvcTemplate.domain.NabeelObject;
 import SpringMvcTemplate.domain.Pokemon;
 import SpringMvcTemplate.domain.TypeDescription;
 
@@ -119,7 +120,16 @@ public class PokeApiClientImpl implements ApiClient {
 		}
 		if(allData) {
 		//	item.getMoves().stream().map(f -> f.getMove().getName())
-			json = new JSONObject(item);
+			
+			NabeelObject transferObject = new NabeelObject(item.getName(),item.getHeight(),item.getWeight(),item.getTypes().get(0).getType().getName());
+			for(int i =0; i<5;i++) {
+				if(i < item.getMoves().size()) {
+					transferObject.addMove(item.getMoves().get(i).getMove().getName());
+				}
+			}
+			
+			json = new JSONObject(transferObject);
+			
 			
 			return json.toString();
 		}
