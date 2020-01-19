@@ -46,8 +46,8 @@ public class PokeApiClientImpl implements ApiClient {
 	public String getInformation(String type) {
 		switch(type) {
 		case "spicy": return getSpicyBerry();
-		case "pokemon": return getPokemon(false);
-		case "pokemon-name":return getPokemon(true);
+		case "pokemon": return getPokemon(true);
+		case "pokemon-name":return getPokemon(false);
 			default: return getSpicyBerry();
 		}
 	}
