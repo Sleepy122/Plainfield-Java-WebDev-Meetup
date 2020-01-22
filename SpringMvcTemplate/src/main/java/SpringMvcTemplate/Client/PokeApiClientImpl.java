@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,14 +120,11 @@ public class PokeApiClientImpl implements ApiClient {
 			e.printStackTrace();
 		}
 		if(allData) {
-		//	item.getMoves().stream().map(f -> f.getMove().getName())
-			
 			NabeelObject transferObject = new NabeelObject(item.getName(),item.getHeight(),item.getWeight(),item.getTypes().get(0).getType().getName());
-			for(int i =0; i<5;i++) {
-				if(i < item.getMoves().size()) {
-					transferObject.addMove(item.getMoves().get(i).getMove().getName());
-				}
-			}
+			
+			item.getMoves().stream()
+			.limit(5)
+			.forEach(p -> transferObject.addMove(p.getMove().getName()));
 			
 			json = new JSONObject(transferObject);
 			
