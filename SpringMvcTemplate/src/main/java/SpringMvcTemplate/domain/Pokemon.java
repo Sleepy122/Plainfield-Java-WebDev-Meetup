@@ -22,7 +22,7 @@ public class Pokemon {
 	@JsonIgnore
 	private boolean is_default;
 	
-	@JsonIgnore
+	
 	private Sprite sprites;
 	
 	@JsonIgnore

@@ -9,17 +9,19 @@ public class NabeelObject {
 	private Integer height;
 	private String type;
 	private List<String> moves;
+	private Sprite sprites;
 	public NabeelObject() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NabeelObject(String name, Integer weight, Integer height, String type) {
+	public NabeelObject(String name, Integer weight, Integer height, String type,Sprite sprites) {
 		super();
 		this.name = name;
 		this.weight = weight;
 		this.height = height;
 		this.type = type;
 		this.moves = new ArrayList();
+		this.sprites = sprites;
 	}
 	public String getName() {
 		return name;
@@ -54,6 +56,12 @@ public class NabeelObject {
 	
 	public void addMove(String move) {
 		moves.add(move);
+	}
+	public Sprite getSprites() {
+		return sprites;
+	}
+	public void setSprites(Sprite sprites) {
+		this.sprites = sprites;
 	}
 	
 	

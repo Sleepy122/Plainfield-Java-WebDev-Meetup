@@ -120,7 +120,7 @@ public class PokeApiClientImpl implements ApiClient {
 			e.printStackTrace();
 		}
 		if(allData) {
-			NabeelObject transferObject = new NabeelObject(item.getName(),item.getHeight(),item.getWeight(),item.getTypes().get(0).getType().getName());
+			NabeelObject transferObject = new NabeelObject(item.getName(),item.getHeight(),item.getWeight(),item.getTypes().get(0).getType().getName(),item.getSprites());
 			
 			item.getMoves().stream()
 			.limit(5)
