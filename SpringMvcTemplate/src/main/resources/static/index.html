@@ -244,6 +244,9 @@
                    // var d = data;
                   //  var imageURI = data.sprites.front_default;
                   data = JSON.parse(data);
+                   var imageURI = data.sprites.front_default;
+                   $('#pokemonPicture')[0].src = imageURI;
+
                     console.log(data);
                   //  console.log(imageURI);
                     //console.log(d);
@@ -266,8 +269,10 @@
 
                $.get("/getPokemon",function(data){
                    // var d = data;
-                  //  var imageURI = data.sprites.front_default;
                   data = JSON.parse(data);
+                    var imageURI = data.sprites.front_default;
+                    $('#EnemyPicture')[0].src =imageURI ;
+
                     console.log(data);
                   //  console.log(imageURI);
                     //console.log(d);

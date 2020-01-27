@@ -12,6 +12,8 @@
 
     <!--Font awesome CDN kit-->
     <script src="https://kit.fontawesome.com/8836cb30f1.js" crossorigin="anonymous"></script>
+    
+    
     <style>
         .card {
             position: relative;
@@ -194,6 +196,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
 <script>
     $(document).ready(function(){
 
@@ -203,10 +206,9 @@
                   "method": "GET",
                   "timeout": 0,
                 };
-            //    debugger;
+                debugger;
                $.ajax(settings).done(function (response) {
                          var imageURI = data3.sprites.front_default;
-
                          console.log("Number: ", pokeID);
                          console.log("Name: ", pokeName);
                          console.log("Type 1: ", pokeType1);
@@ -215,8 +217,8 @@
                          console.log("Description: ", pokeDescription);
                          console.log("Image URI: ", imageURI);
                        });
-        
-	*/
+        */
+
             //hide all dynamic elements upon loading
             $('#VS').hide();
             $('#HP').hide();
@@ -225,11 +227,25 @@
             $('#EnemyCard').hide();
             $('#EHP').hide();
 
+            $.ajax({
+                type: "GET",
+                url: "common_pokemon_names.txt",
+                datatype: "text",
+                success: function(response){
+                    data = $.csv.toArrays(response);
+                    for(var i = 0; i < data.length; i++){
+                        $('#PokemonSelection').append(' <option>' + data[i] +'</option>')
+                    }
+                }
+            })
+
             $('#StartBattleBtn').click(function(){
-                $.get("http://localhost:8080/getPokemon",function(data){
-                    var d = data;
+                $.get("/getPokemon",function(data){
+                   // var d = data;
+                  //  var imageURI = data.sprites.front_default;
                   data = JSON.parse(data);
-                  var imageURI = data.sprites.front_default;
+                   var imageURI = data.sprites.front_default;
+                   $('#pokemonPicture')[0].src = imageURI;
 
                     console.log(data);
                   //  console.log(imageURI);
@@ -251,14 +267,13 @@
                 $('.progress').show();
                });
 
-              //  "https://springmvctemplate.cfapps.io/getPokemon"
-               $.get("http://localhost:8080/getPokemon",function(data){
-                    var d = data;
+               $.get("/getPokemon",function(data){
+                   // var d = data;
                   data = JSON.parse(data);
-                    console.log(data);
                     var imageURI = data.sprites.front_default;
-                    $('#pokemonPicture')[0].src = data.sprite.front_default;
-          
+                    $('#EnemyPicture')[0].src =imageURI ;
+
+                    console.log(data);
                   //  console.log(imageURI);
                     //console.log(d);
                     //    $('#name').data[0];
