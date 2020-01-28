@@ -22,7 +22,7 @@ jobs:
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
-        api_key: 09a5d9bc106fe042930c852b084e32d3a3df4c06
+        api_key: $GITHUB_OAUTH_TOKEN
         file: "build/libs/SpringMvcTemplate-0.0.1-SNAPSHOT.jar"
         skip_cleanup: true
    - stage: deploy to cf
