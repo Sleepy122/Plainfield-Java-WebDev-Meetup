@@ -5,18 +5,18 @@ set -e
 app_name="${1:-SpringMvcTemplate}"
 script_dir="${2:-.}"
 service_name="${3:-PokeDatabase}"
-#service_key="${4:-flyway-migration-key}"
+service_key="${4:-flyway-migration-key}"
 
 #need to research does main run first
 function main() {
 
    # echo "Creating service key, if necessary ..."
    # need to understand this
-   # cf create-service-key $service_name $service_key > /dev/null
+    cf create-service-key $service_name $service_key > /dev/null
 
     echo "Retrieving target database parameters ..."
 
-    credentials=$(cf service-key $service_name $service_key | sed -ne '/{/,$p')
+    credentials=$(cf service-key $service_name | sed -ne '/{/,$p')
 
 	# research jq
     db_host=$(echo $credentials | jq -r '.hostname')
@@ -39,15 +39,15 @@ function main() {
 
     wait_for_tunnel
 
-    echo "Running migration ..."
+   # echo "Running migration ..."
 
-    flyway-*/flyway -url="jdbc:mysql://127.0.0.1:63306/$db_name" \
-        -locations=filesystem:"$script_dir"/databases/tracker \
-        -user="$db_username" \
-        -password="$db_password" \
-        migrate
+   # flyway-*/flyway -url="jdbc:mysql://127.0.0.1:63306/$db_name" \
+   #    -locations=filesystem:"$script_dir"/databases/tracker \
+   #     -user="$db_username" \
+   #     -password="$db_password" \
+   #     migrate
 
-    echo "Migration complete"
+   # echo "Migration complete"
 
 }
 
