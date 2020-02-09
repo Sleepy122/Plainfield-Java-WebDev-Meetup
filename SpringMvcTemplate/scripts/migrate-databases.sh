@@ -39,15 +39,15 @@ function main() {
 
     wait_for_tunnel
 
-   # echo "Running migration ..."
+    echo "Running migration ..."
 
-   # flyway-*/flyway -url="jdbc:mysql://127.0.0.1:63306/$db_name" \
-   #    -locations=filesystem:"$script_dir"/databases/tracker \
-   #     -user="$db_username" \
-   #     -password="$db_password" \
-   #     migrate
+    flyway-*/flyway -url="jdbc:mysql://127.0.0.1:63306/$db_name" \
+       -locations=filesystem:"$script_dir"/databases/tracker \
+        -user="$db_username" \
+        -password="$db_password" \
+        migrate
 
-   # echo "Migration complete"
+    echo "Migration complete"
 
 }
 
