@@ -1,0 +1,10 @@
+
+DROP DATABASE IF EXISTS pokeapi;
+
+CREATE DATABASE pokeapi_db;
+
+CREATE USER IF NOT EXISTS 'poke'@'%'
+IDENTIFIED BY '';
+
+GRANT ALL PRIVILEGES ON pokeapi_db TO 'poke'@'%';
+
