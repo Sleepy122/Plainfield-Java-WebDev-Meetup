@@ -23,6 +23,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import SpringMvcTemplate.config.RestTemplateConfig;
 import SpringMvcTemplate.domain.Berry;
 import SpringMvcTemplate.domain.BerryFlavorMap;
 import SpringMvcTemplate.domain.Move;
@@ -38,7 +40,6 @@ public class PokeApiClientImpl implements ApiClient {
 	private final String pokemonUrl = "https://www.pokeapi.co/api/v2/pokemon/";
 	@Autowired
 	private RestTemplate restTemplate;
-	
 	
 	public PokeApiClientImpl(RestTemplate restTemplate) {
 		super();
