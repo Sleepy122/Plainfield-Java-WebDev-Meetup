@@ -12,9 +12,6 @@ jobs:
       language: java
       jdk: openjdk11
       install: skip
-      before_script:
-        - mysql -uroot < databases/tracker/create_databases.sql
-        - ./gradlew testMigrate
       script: ./gradlew clean build
       before_deploy:
         - git config --local user.name "Sleepy1221"
