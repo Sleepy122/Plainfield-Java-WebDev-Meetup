@@ -12,13 +12,11 @@ jobs:
     - stage: build and publish
       language: java
       jdk: openjdk11
-      addons:
-        mariadb: '10.2'
       install: skip
       script: ./gradlew clean build
       before_deploy:
-        - git config --local user.name "Travis CI"
-        - git config --local user.email "travis@example.com"
+        - git config --local user.name "Sleepy1221"
+        - git config --local user.email "ImAnnoyed1245@gmail.com"
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
@@ -41,7 +39,6 @@ jobs:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       before_script:
         - cf login -a $CF_API_URL -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
-        - scripts/migrate-databases.sh SpringMvcTemplate .
       deploy:
         provider: cloudfoundry
         api: $CF_API_URL
