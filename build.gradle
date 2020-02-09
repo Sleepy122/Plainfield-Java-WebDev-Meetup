@@ -1,7 +1,16 @@
+
+buildscript {
+   dependencies {
+       classpath 'mysql:mysql-connector-java:8.0.13'
+   }
+}
 plugins {
 	id 'org.springframework.boot' version '2.2.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "5.2.1"
+
+	
 }
 
 group = 'com.webdev'
@@ -17,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation  'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'mysql:mysql-connector-java'
 	compileOnly 'org.projectlombok:lombok:1.18.10'
 	annotationProcessor 'org.projectlombok:lombok:1.18.10'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -27,3 +37,4 @@ dependencies {
 test {
 
 }
+
