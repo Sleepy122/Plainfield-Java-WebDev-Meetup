@@ -15,8 +15,8 @@ jobs:
       before_script: chmod +x gradlew
       script: ./gradlew clean build
       before_deploy:
-        - git config --local user.name "Sleepy1221"
-        - git config --local user.email "ImAnnoyed1245@gmail.com"
+        - git config --local user.name "Sleepy122"
+        - git config --local user.email "Calder.Jones3155@gmail.com"
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
