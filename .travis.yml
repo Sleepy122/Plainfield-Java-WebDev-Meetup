@@ -34,7 +34,7 @@ jobs:
         - curl https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.2.1/flyway-commandline-5.2.1-linux-x64.tar.gz | tar xvz
       script:
         - echo "Downloading $RELEASE_TAG"
-        - wget -P build/libs https://github.com/$GITHUB_USERNAME/ImHellaAnnoyed/releases/download/$RELEASE_TAG/SpringMvcTemplate:.jar
+        - wget -P build/libs https://github.com/$GITHUB_USERNAME/ImHellaAnnoyed/releases/download/$RELEASE_TAG/SpringMvcTemplate.jar
       before_deploy:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       before_script:
